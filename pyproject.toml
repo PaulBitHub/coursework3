@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "coursework3"
+version = "1.0"
+description = "For SkyPro"
+authors = ["bityakov_paul"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pytest = "^8.2.1"
+pytest-cov = "^5.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.1"
+pytest-cov = "^5.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

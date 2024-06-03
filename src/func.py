@@ -1,7 +1,12 @@
+import sys
 from datetime import datetime
 
 def find_executed_elements(list_data):
     """Находит по ключу 'state' executed операции и вносит их в лист"""
+    if not isinstance(list_data, list):
+        print("Проверьте вводные данные - они должны быть формата list")
+        sys.exit(1)
+
     executed_list = []
     for operation in list_data:
         try:
@@ -14,6 +19,9 @@ def find_executed_elements(list_data):
 
 def format_date(date):
     """Преобразует дату из 2019-08-26T10:50:58.294041 в дд.мм.гггг"""
+    if not isinstance(date, str):
+        print("Проверьте вводные данные - они должны быть формата string")
+        sys.exit(1)
     date_obj = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S.%f")
     formatted_date = date_obj.strftime("%d.%m.%Y")
     return formatted_date
@@ -28,7 +36,7 @@ def format_secret_card(data_str):
         start_words = data_str[:len(data_str) - 20]
         mask_part = '**' + for_mask_part[-4:]
     else:
-        mask_part = for_mask_part[:4] + ' ' + for_mask_part[6:8] + '** **** ' + for_mask_part[-4:]
+        mask_part = for_mask_part[:4] + ' ' + for_mask_part[4:6] + '** **** ' + for_mask_part[-4:]
 
     return start_words + mask_part
 
@@ -42,6 +50,9 @@ def display_transaction(ready_data):
     <дата перевода> <описание перевода>
     <откуда> -> <куда>
     <сумма перевода> <валюта>"""
+    if not isinstance(ready_data, list):
+        print("Проверьте вводные данные - они должны быть формата list")
+        sys.exit(1)
     for operation in ready_data:
         try:
             block = (f'{format_date(operation["date"])} {operation["description"]}\n'
